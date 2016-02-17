@@ -11,6 +11,13 @@ import java.util.List;
  */
 public class Chats {
 
+    /*====================== Dialog & Group =========================*/
+
+
+    @FindBy(name = "Чаты")
+    public static WebElement chatsTitle;
+
+    //todo => tab by class or id (for search by index)
     @FindBy(className = "android.support.v7.app.ActionBar$Tab")
     public static List<WebElement> actionTabs;
 
@@ -20,10 +27,8 @@ public class Chats {
     @FindBy(className = "android.widget.TextView")
     public static WebElement s_text;
 
-    @FindBy(name = "Чаты")
-    public static WebElement chatsTitle;
-
-    //todo => tab by class or id (for search by index)
+    @FindBy(id = "fab_contacts")
+    public static WebElement createChat;
 
     @FindBy(className = "android.widget.ImageButton")
     public static WebElement menuIcon;
@@ -33,6 +38,13 @@ public class Chats {
 
     @FindBy(id = "text_view_chat_name")
     public static List<WebElement> dialogName;
+
+    /*===========================Side Bar==========================*/
+    @FindBy(id = "design_navigation_view")
+    public static WebElement sideBar;
+
+    @FindBy(id = "design_menu_item_text")
+    public static List<WebElement> sideBarMenuItems;
 
     /*============================Msg Box==========================*/
 
@@ -73,71 +85,18 @@ public class Chats {
 
     /*========================Attach List=============================*/
 
-    @FindBy(id = "list")
+    @FindBy(id = "image")
     public static List<WebElement> list;
 
-
     @FindBy(id = "fab_done")
-    public static WebElement gallerySubmit;
+    public static WebElement gallerySubmit, previewSubmit, submitCrtBtn;
 
     @FindBy(id = "delete")
     public static WebElement previewDelImage;
 
 
-/*=============================Test==================================*/
-
-   /* public static WebElement element(By locator) {
-        return driver.findElement(locator);
-    }
-
-    *//**
-     * Return a list of elements by locator *
-     *//*
-    public static List<WebElement> elements(By locator) {
-        return driver.findElements(locator);
-    }
+    /*=============================Test==================================*/
 
 
-    *//**
-     * Return a static text element by xpath index *
-     *//*
-    public static WebElement s_text(int xpathIndex) {
-        return element(for_text(xpathIndex));
-    }
-
-    *//**
-     * Return a static text locator by xpath index *
-     *//*
-    public static By for_text(int xpathIndex) {
-        return By.xpath("//android.widget.TextView[" + xpathIndex + "]");
-    }
-
-    *//**
-     * Return a static text element that contains text *
-     *//*
-    public static WebElement text(String text) {
-        return element(for_text(text));
-    }
-
-    *//**
-     * Return a static text locator that contains text *
-     *//*
-    public static By for_text(String text) {
-        return By.xpath("//android.widget.TextView[contains(@text, '" + text + "')]");
-    }
-
-    *//**
-     * Return a static text element by exact text *
-     *//*
-    public static WebElement text_exact(String text) {
-        return element(for_text_exact(text));
-    }
-
-    *//**
-     * Return a static text locator by exact text *
-     *//*
-    public static By for_text_exact(String text) {
-        return By.xpath("//android.widget.TextView[@text='" + text + "']");
-    }*/
 
 }
