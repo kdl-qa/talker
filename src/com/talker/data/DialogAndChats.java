@@ -1,7 +1,7 @@
 package com.talker.data;
 
 import com.talker.page_object.android.Chats;
-import com.talker.page_object.android.Contacts;
+import com.thoughtworks.selenium.condition.Presence;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -24,14 +24,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 //     * Created by kdl on 02.02.16.
 //     */
 public class DialogAndChats {
+    private AndroidDriver driver;
     private WebDriverWait wait;
     private TouchActions touchScreen;
-    private AndroidDriver driver;
 
     public DialogAndChats(AndroidDriver driver, WebDriverWait wait, TouchActions touchScreen) {
+        this.driver = driver;
         this.wait = wait;
         this.touchScreen = touchScreen;
-        this.driver = driver;
     }
 
 
@@ -47,7 +47,7 @@ public class DialogAndChats {
     }
 
     public boolean tapMenuIcon() {
-        if (Chats.actionBar.isDisplayed() & Chats.chatsTitle.isDisplayed()) {
+        if (Chats.actionBar.isDisplayed() & Chats.chatsScreenTitle.isDisplayed()) {
             Chats.menuIcon.click();
             return true;
         } else {
@@ -82,7 +82,7 @@ public class DialogAndChats {
     public boolean openDialogByIndex(int index) {
 
         wait.until(ExpectedConditions.visibilityOf(Chats.dialogListView));
-        if (Chats.actionBar.isDisplayed() & Chats.chatsTitle.isDisplayed()) {
+        if (Chats.actionBar.isDisplayed() & Chats.chatsScreenTitle.isDisplayed()) {
             if (Chats.dialogName.isEmpty()) {
                 System.out.println("You don't have any chats");
             } else Chats.dialogName.get(index).click();
@@ -91,7 +91,7 @@ public class DialogAndChats {
     }
 
     public boolean openDialogByName(String name) {
-        if (Chats.actionBar.isDisplayed() & Chats.chatsTitle.isDisplayed()) {
+        if (Chats.actionBar.isDisplayed() & Chats.chatsScreenTitle.isDisplayed()) {
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("list_chats")));
             if (Chats.dialogName.isEmpty()) {
                 System.out.println("You don't have any chats");
@@ -181,13 +181,16 @@ public class DialogAndChats {
 
     /*=================== Groups ==========================*/
 
-    public void createDialogFromChats(int index) {
-        if (Chats.dialogListView.isDisplayed()) {
-            Chats.createChat.click();
-            Contacts.contactsList.get(index).click();
-            Chats.submitCrtBtn.click();
-        }
-//        return true;
+    public boolean createChatFromDialogTab(String contact_name) {
+        Chats.createChat.click();
+//            for (WebElement contact : Contacts.contactName) {
+//                if (contact.getText().equalsIgnoreCase(contact_name)) {
+//                    contact.click();
+//                } else System.out.println("Contact name is not founded!");
+//            }
+////            Contacts.contactName.get(contact_name).click();
+//        Chats.submitCrtBtn.click();
+        return true;
     }
 
 }

@@ -6,6 +6,7 @@ import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.interactions.touch.TouchActions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertTrue;
@@ -28,10 +29,10 @@ public class Groups {
 
     @Test (groups = {"createGroup"}, priority = 0, enabled = true)
     public void createGroupFromDialog() throws InterruptedException {
-    chatsTester.createDialogFromChats(1);
+    assertTrue(chatsTester.createChatFromDialogTab("алексей кононенко"));
     }
 
-    @AfterClass
+    @AfterTest
     public void closeApp() {
         driver.quit();
     }

@@ -13,9 +13,11 @@ public class Chats {
 
     /*====================== Dialog & Group =========================*/
 
+    public static String chat_title = "username_toolbar";
+
 
     @FindBy(name = "Чаты")
-    public static WebElement chatsTitle;
+    public static WebElement chatsScreenTitle;
 
     //todo => tab by class or id (for search by index)
     @FindBy(className = "android.support.v7.app.ActionBar$Tab")
@@ -23,6 +25,9 @@ public class Chats {
 
     @FindBy(id = "toolbar")
     public static WebElement actionBar;
+
+    @FindBy(id = "username_toolbar")
+    public static WebElement chatTitle;
 
     @FindBy(className = "android.widget.TextView")
     public static WebElement s_text;

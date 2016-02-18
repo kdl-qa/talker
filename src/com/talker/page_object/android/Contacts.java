@@ -15,6 +15,6 @@ public class Contacts {
     public static List<WebElement> contactsList;
 
     @FindBy(id = "text_view_contact_name")
-    public static WebElement contactName;
+    public static List<WebElement> contactName;
 
 }
